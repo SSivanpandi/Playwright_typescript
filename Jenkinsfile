@@ -17,10 +17,22 @@ pipeline {
         stage('Run Playwright Tests') {
             steps {
                 sh '''
-                npx playwright test --list
                 npx playwright test
+
                 '''
             }
         }
+        stage('Generate Allure Report') {
+        sh 'allure generate allure-results -o allure-report --clean'
+    }
+        post {
+        always {
+            allure([
+                includeProperties: false,
+                jdk: '',
+                results: [[path: 'C:\Test\Playwright_typescript\allure-results']]
+            ])
+        }
+    }
     }
 }
