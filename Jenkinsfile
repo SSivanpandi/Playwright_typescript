@@ -23,8 +23,10 @@ pipeline {
             }
         }
         stage('Generate Allure Report') {
-        sh 'allure generate allure-results -o allure-report --clean'
-    }
+            steps {
+                sh 'allure generate allure-results -o allure-report --clean'
+                }
+        }
         post {
         always {
             allure([
