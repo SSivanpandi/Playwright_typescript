@@ -27,14 +27,14 @@ pipeline {
                 sh 'allure generate allure-results -o allure-report --clean'
                 }
         }
-        post {
-        always {
-            allure([
-                includeProperties: false,
-                jdk: '',
-                results: [[path: 'Playwright_typescript/allure-results']]
+    }
+    post {
+            always {
+                allure([
+                    includeProperties: false,
+                    jdk: '',
+                    results: [[path: 'Playwright_typescript/allure-results']]
             ])
         }
-    }
     }
 }
