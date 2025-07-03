@@ -30,7 +30,7 @@ pipeline {
             allure([
                 includeProperties: false,
                 jdk: '',
-                results: [[path: 'C:\Test\Playwright_typescript\allure-results']]
+                results: [[path: 'Playwright_typescript/allure-results']]
             ])
         }
     }
